@@ -23,13 +23,22 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('lop-hoc.index')}}">Quan ly lop hoc</a>
+                    
+                </li>
+                <li class="nav-item">
+                   
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::check() ? Auth::user()->email : 'Tài khoản'}}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
+                        @if(Auth::check())
+                            <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
+                        @else
+                            <a class="dropdown-item" href="{{route('user.register')}}">Đăng ký</a>
+                            <a class="dropdown-item" href="{{route('login')}}">Đăng nhập</a>
+                        @endif
+                        
+                       
                     </div>
                 </li>
             </ul>
